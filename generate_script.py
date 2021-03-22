@@ -1,4 +1,3 @@
-import librosa
 import soundfile as sf
 from src.wavenet_model import *
 from src.audio_data import WavenetDataset
@@ -23,7 +22,7 @@ data = WavenetDataset(dataset_file='train_samples/pl_npz/pl_data.npz',
 print('the dataset has ' + str(len(data)) + ' items')
 
 # start_data = data[250000][0]
-start_data = data[10][0]
+start_data = data[1000][0]
 start_data = torch.max(start_data, 0)[1]
 
 
@@ -31,7 +30,7 @@ def prog_callback(step, total_steps):
     print(str(100 * step // total_steps) + "% generated")
 
 
-generated = model.generate_fast(num_samples=16000,
+generated = model.generate_fast(num_samples=160000,
                                  first_samples=start_data,
                                  progress_callback=prog_callback,
                                  progress_interval=1000,
@@ -40,4 +39,3 @@ generated = model.generate_fast(num_samples=16000,
 
 print(generated)
 sf.write('latest_generated_clip.wav', generated, samplerate=16000)
-#librosa.output.write_wav('latest_generated_clip.wav', generated, sr=16000)

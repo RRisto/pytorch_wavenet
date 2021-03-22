@@ -3,7 +3,6 @@ from src.wavenet_model import *
 from src.audio_data import WavenetDataset
 from src.wavenet_training import *
 from src.model_logging import *
-from scipy.io import wavfile
 
 dtype = torch.FloatTensor
 ltype = torch.LongTensor

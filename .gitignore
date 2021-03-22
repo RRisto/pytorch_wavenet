@@ -4,10 +4,8 @@
 _generated_samples/
 _train_samples/
 logs/
-notebooks/
 profiling/
 snapshots/
-tests/test_model.py
 tests/logs/
 !/generated_samples/chaconne_temp_1,0.mp3
 !/generated_samples/chaconne_temp_0,8.mp3

@@ -1,4 +1,3 @@
-import os
 import os.path
 import time
 from .wavenet_modules import *
@@ -177,8 +176,6 @@ class WaveNetModel(nn.Module):
 
     def queue_dilate(self, input, dilation, init_dilation, i):
         queue = self.dilated_queues[i]
-        # print(type(f'RISTO: type is {input.data[0]}'))
-        #queue.enqueue(input.data[0])
         queue.enqueue(input.data[0].squeeze())
         x = queue.dequeue(num_deq=self.kernel_size,
                           dilation=dilation)
