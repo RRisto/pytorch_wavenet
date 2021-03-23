@@ -47,7 +47,6 @@ class DilatedQueue:
         self.data = data
         self.dtype = dtype
         if data == None:
-            # self.data = Variable(dtype(num_channels, max_length).zero_())
             self.data = torch.zeros((num_channels, max_length))
 
     def enqueue(self, input):
@@ -70,7 +69,6 @@ class DilatedQueue:
         return t
 
     def reset(self):
-        # self.data = Variable(self.dtype(self.num_channels, self.max_length).zero_())
         self.data = torch.zeros((self.num_channels, self.max_length))
         self.in_pos = 0
         self.out_pos = 0
@@ -84,7 +82,6 @@ class ConstantPad1d(nn.Module):
         self.value = value
         self.pad_start = pad_start
 
-    # @staticmethod
     def forward(self, input):
         self.num_pad = self.target_size - input.size(self.dimension)
         assert self.num_pad >= 0, 'target size has to be greater than input size'
@@ -105,7 +102,6 @@ class ConstantPad1d(nn.Module):
         c_output.copy_(input)
         return output
 
-    # @staticmethod
     def backward(self, grad_output):
         grad_input = grad_output.new(*self.input_size).zero_()
         cg_output = grad_output

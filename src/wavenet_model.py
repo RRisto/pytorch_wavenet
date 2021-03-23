@@ -3,6 +3,7 @@ import time
 from .wavenet_modules import *
 from .audio_data import *
 import torch.nn as nn
+import torch.nn.functional as F
 
 
 class WaveNetModel(nn.Module):
